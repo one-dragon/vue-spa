@@ -3,13 +3,21 @@ webpack3.X + Vue2全家桶(vue-router、vuex、vue-loader、vue-i18n)搭建的�
 
 一、 安装
 
-1.首先需要本地电脑中安装nodejs，因为webpack是基本node开发的， 我的node版本为v8.9.3，请下载v8.x.x的版本node进行安装。
+1.安装node
+    
+    本地电脑中安装nodejs，因为webpack是基本node开发的， 我的node版本为v8.9.3，请下载v8.x.x的版本node进行安装。
 
-2.下载当前工程，用cmd打开到当前目录下，输入npm init安装package.json中的依赖(注意npm3.x以上的版本安装包是平行依赖安装的，如果不想平行安装可以输入npm init --legacy-bundling)
+2.安装依赖包
+    
+    下载工程，cmd打开到当前目录下，输入npm init安装package.json中的依赖(注意npm3.x以上的版本安装包是平行依赖安装的，如果不想平行安装可以输入npm init --legacy-bundling)
 
-3.依赖包安装完成后，可以在cmd中(当前目录下)输入npm run dev命令，当前命令表示开发版打包编译并且是实时的，还有生产版打包命令npm run build，在package.json中scripts里。
+3.输入命令
+    
+    在cmd中(当前目录下)输入npm run dev命令，当前命令表示开发版打包编译并且是实时的，还有生产版打包命令npm run build，在package.json中scripts里。
 
-4.编译完成后浏览器会自动打开当前开发地址，可以看到首页内容
+4.打开首页
+    
+    编译完成后浏览器会自动打开当前开发地址，可以看到首页内容
 
 
 二、目录
