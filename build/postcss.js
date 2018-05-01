@@ -11,15 +11,12 @@ module.exports = function postcssConfig(isArr) {
                 },
             })
         }),
-        // require('postcss-url')();
-        // require('postcss-cssnext')(),
         require('autoprefixer')({browsers:'last 5 versions'}),
         require('cssnano')(),
     ]
     return {
         sourceMap: process.env.NODE_ENV == 'development',
         useConfigFile: false,
-        // ident: 'postcss',
         plugins: isArr ? pluginsArr : (loader) => pluginsArr,
     }
 }

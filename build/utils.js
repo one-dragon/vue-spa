@@ -1,5 +1,4 @@
 
-// 设置babel-loader里的options配置
 exports.getBabelOptions = () => {
     const Options = require('./options');
     let obj = Object.assign(
@@ -22,7 +21,6 @@ exports.getBabelOptions = () => {
     return obj;
 }
 
-//报错提示信息
 exports.createNotifierTip = () => {
     const path = require('path');
     const notifier = require('node-notifier');
@@ -43,7 +41,6 @@ exports.createNotifierTip = () => {
     }
 }
 
-// 使用DllPlugin打包公共文件，获取对应的文件名
 exports.getDllVendor = (callback) => {
     const path = require('path');
     const fs = require('fs');

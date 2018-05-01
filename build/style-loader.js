@@ -26,11 +26,7 @@ module.exports = function styleLoader(ext, loaders = [], isVueLoader = false) {
         options: {
             sourceMap,
             minimize: !sourceMap,
-            importLoaders: loaders.length, // Important!
-            //alias: {
-                //'/static': join(this.options.srcDir, 'static'),
-                //'/assets': join(this.options.srcDir, 'assets')
-            //}
+            importLoaders: loaders.length,
         }
     })
     
@@ -45,6 +41,4 @@ module.exports = function styleLoader(ext, loaders = [], isVueLoader = false) {
     }
 
     return sourceMap ? [hotLoader].concat(extractLoader) : extractLoader;
-    // return extractLoader;
-    // return [vueStyleLoader].concat(loaders);
 }

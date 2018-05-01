@@ -27,7 +27,6 @@ const createLintingRule = () => ({
 const baseConfig = {
     entry: {
         app: './src/app/app.js',
-        // vendor: ['vue', 'axios', 'vue-router', 'vuex', 'babel-polyfill'].concat(Options.build.vendor),
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -44,7 +43,7 @@ const baseConfig = {
         }
     },
     module: {
-        noParse: /es6-promise\.js$/, // Avoid webpack shimming process
+        noParse: /es6-promise\.js$/,
         rules: [
             ...(Options.build.useEslint ? [createLintingRule()] : []),
             {
@@ -55,14 +54,11 @@ const baseConfig = {
             {
                 test: /\.jsx?$/,
                 use: 'happypack/loader?id=js',
-                // loader: 'babel-loader',
-                // options: getBabelOptions(),
                 include: Array.isArray(Options.build.babelLoaderInclude) && Options.build.babelLoaderInclude.length > 0
                 ? Options.build.babelLoaderInclude 
                 : [ path.resolve(__dirname, '../src') ],
             },
             {
-                // 使所有以 .json5 结尾的文件使用 `json5-loader`
                 test: /\.json5$/,
                 loader: 'json5-loader',
             },
@@ -111,8 +107,6 @@ const baseConfig = {
         ]
     },
     plugins: [
-    
-        //采用多进程去打包构建
         new HappyPack({
             id: 'js',
             threads: 4,
@@ -121,18 +115,6 @@ const baseConfig = {
                 options: getBabelOptions(),
             }]
         }),
-        
-        /*
-        //框架、插架打包成公共js
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest'],
-            minChunks: Infinity
-        }),
-        
-        // 把manifest.js文件打到html中减少一次http请求， 并且往</body>前加入代码：<%= htmlWebpackPlugin.files.webpackManifest %>
-        new InlineManifestWebpackPlugin(),
-        */
-        
         //复制文件
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../src/static'),
@@ -142,21 +124,16 @@ const baseConfig = {
     ].concat(Options.build.plugins)
 }
 
-// 使用CommonsChunkPlugin插件打包公共文件
 if(!Options.build.useDllPlugin) {
     baseConfig.entry.vendor = ['vue', 'axios', 'vue-router', 'vuex', 'babel-polyfill'].concat(Options.build.vendor);
     baseConfig.plugins = baseConfig.plugins.concat([
-        //框架、插架打包成公共js
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest'],
             minChunks: Infinity
         }),
-        
-        // 把manifest.js文件打到html中减少一次http请求， 并且往</body>前加入代码：<%= htmlWebpackPlugin.files.webpackManifest %>
         new InlineManifestWebpackPlugin(),
     ])
 }
-// 使用DllPlugin打包公共文件
 if(Options.build.useDllPlugin) {
     baseConfig.plugins.push(
         new webpack.DllReferencePlugin({
