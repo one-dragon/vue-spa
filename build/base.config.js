@@ -10,7 +10,6 @@ const InlineManifestWebpackPlugin = require("inline-manifest-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HappyPack = require('happypack');
 
-//eslint配置
 const createLintingRule = () => ({
     test: /\.(js|vue)$/,
     loader: 'eslint-loader',
@@ -115,7 +114,6 @@ const baseConfig = {
                 options: getBabelOptions(),
             }]
         }),
-        //复制文件
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../src/static'),
             to: 'static',
