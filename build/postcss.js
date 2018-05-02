@@ -12,7 +12,7 @@ module.exports = function postcssConfig(isArr) {
             })
         }),
         require('autoprefixer')({browsers:'last 5 versions'}),
-        require('cssnano')(),
+        require('cssnano')({ safe: true }),
     ]
     return {
         sourceMap: process.env.NODE_ENV == 'development',
