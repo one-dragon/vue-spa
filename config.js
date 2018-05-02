@@ -47,7 +47,7 @@ module.exports = {
         // 是否使用eslint, 默认使用
         useEslint: true,
         // 是否使用DllPlugin打包公共文件， 默认使用CommonsChunkPlugin插件打包公共文件
-        useDllPlugin: true
+        useDllPlugin: false
     },
     // 开发模式下访问地址
     local: {
