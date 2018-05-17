@@ -17,9 +17,12 @@ module.exports = {
                     {
                         name: 'vux-ui'
                     }, 
+                    // 不需要用vux-loader里的duplicate-style，因为在build/postcss中有cssnano进行重复样式清除
+                    /*
                     {
                         name: 'duplicate-style'
                     }
+                    */
                 ]
             })
         },
